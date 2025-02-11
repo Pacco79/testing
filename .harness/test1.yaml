@@ -31,7 +31,7 @@ pipeline:
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: NewDockerReg
+                    connectorRef: DockerReg
                     repo: pactech/custom-app
                     tags:
                       - latest
