@@ -39,9 +39,9 @@ pipeline:
                     dockerfile: CA-Dockerfile
                     context: .
           caching:
-            enabled: false
+            enabled: true
             paths: []
           buildIntelligence:
-            enabled: false
+            enabled: true
         delegateSelectors:
           - helm-delegate
