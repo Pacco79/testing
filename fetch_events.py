@@ -3,7 +3,7 @@ import pandas as pd
 from flask import Flask, render_template
 
 # Fetch data from the API
-response = requests.get('https://api.yourservice.com/events')
+response = requests.get('https://192.168.1.42/events')
 data = response.json()
 
 # Convert data to a pandas DataFrame
