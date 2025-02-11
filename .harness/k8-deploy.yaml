@@ -1,0 +1,36 @@
+service:
+  name: k8 deploy
+  identifier: k8_deploy
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: customapp
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.GH_events
+                  gitFetchType: Branch
+                  paths:
+                    - app-deployment.yaml
+                    - app-service.yaml
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: org.DockerHub
+                imagePath: pactech/custom-app
+                tag: latest
+                digest: ""
+              identifier: customapp
+              type: DockerRegistry
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: tester
