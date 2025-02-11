@@ -20,6 +20,17 @@ service:
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: true
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: org.DockerHub
+                imagePath: pactech/custom-app
+                tag: <+input>
+                digest: ""
+              identifier: customapp
+              type: DockerRegistry
   gitOpsEnabled: false
   orgIdentifier: default
   projectIdentifier: tester
