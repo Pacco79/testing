@@ -6,7 +6,7 @@ service:
     spec:
       manifests:
         - manifest:
-            identifier: eventsappmanaifests
+            identifier: customapp
             type: K8sManifest
             spec:
               store:
@@ -27,7 +27,7 @@ service:
             - spec:
                 connectorRef: org.DockerHub
                 imagePath: pactech/custom-app
-                tag: <+input>
+                tag: latest
                 digest: ""
               identifier: customapp
               type: DockerRegistry
