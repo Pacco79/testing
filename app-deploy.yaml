@@ -1,0 +1,25 @@
+service:
+  name: add_app_k8
+  identifier: add_app_k8
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: eventsappmanaifests
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.GH_events
+                  gitFetchType: Branch
+                  paths:
+                    - app-deployment.yaml
+                    - app-service.yaml
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: true
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: tester
