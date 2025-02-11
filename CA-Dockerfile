@@ -8,6 +8,7 @@ WORKDIR /app
 COPY ./app.py /app
 COPY ./config.py /app
 COPY ./router.py /app
+COPY ./requirements.txt /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
