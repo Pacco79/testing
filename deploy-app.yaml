@@ -14,6 +14,14 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: add_app_k8
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
           environment:
             environmentRef: org.devtest
             deployToAll: false
@@ -29,6 +37,8 @@ pipeline:
                   spec:
                     skipDryRun: false
                     pruningEnabled: false
+                    delegateSelectors:
+                      - helm-delegate
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
@@ -44,3 +54,5 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+        delegateSelectors:
+          - helm-delegate
