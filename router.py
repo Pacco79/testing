@@ -1,4 +1,7 @@
 # routes.py
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 import requests
 import pandas as pd
