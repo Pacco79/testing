@@ -36,4 +36,5 @@ pipeline:
                     tags:
                       - latest
                     caching: true
+                    context: .
                     dockerfile: CA-Dockerfile
