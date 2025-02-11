@@ -22,7 +22,7 @@ service:
               enableDeclarativeRollback: true
       artifacts:
         primary:
-          primaryArtifactRef: <+input>
+          primaryArtifactRef: ""
           sources:
             - spec:
                 connectorRef: org.DockerHub
