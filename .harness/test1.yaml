@@ -22,7 +22,7 @@ pipeline:
               containerSecurityContext:
                 privileged: true
                 allowPrivilegeEscalation: true
-              harnessImageConnectorRef: NewDockerReg
+              harnessImageConnectorRef: DockerReg
               os: Linux
           execution:
             steps:
