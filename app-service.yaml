@@ -5,7 +5,7 @@ metadata:
   namespace: infra
 spec:
   selector:
-    app: webserver-events
+    app: webserver
   ports:
     - protocol: TCP
       port: 80
