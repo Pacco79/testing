@@ -22,7 +22,7 @@ pipeline:
               containerSecurityContext:
                 privileged: true
                 allowPrivilegeEscalation: true
-              harnessImageConnectorRef: account.harnessImage
+              harnessImageConnectorRef: NewDockerReg
               os: Linux
           execution:
             steps:
@@ -31,7 +31,7 @@ pipeline:
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: NewDockerReg
                     repo: pactech/custom-app
                     tags:
                       - latest
