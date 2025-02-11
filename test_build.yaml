@@ -1,0 +1,43 @@
+pipeline:
+  name: test_build
+  identifier: test_build
+  projectIdentifier: tester
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: org.GH_events
+        build: <+input>
+  stages:
+    - stage:
+        name: build test
+        identifier: build_test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: org.microk8scluster
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              containerSecurityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+              harnessImageConnectorRef: org.DockerHub
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: org.DockerHub
+                    repo: custom-app
+                    tags:
+                      - latest
+                    dockerfile: CA-Dockerfile
