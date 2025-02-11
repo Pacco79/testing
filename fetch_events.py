@@ -6,9 +6,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return "Welcome to the Events API"
+
+@app.route('/events')
+def get_events():
     try:
-        # Update the API endpoint if needed
-        response = requests.get('http://webserver-service-events.infra.svc.cluster.local/events')
+        # Fetch data from the external API
+        response = requests.get('https://127.0.0.1/events')
         response.raise_for_status()
         data = response.json()
 
@@ -24,4 +28,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
