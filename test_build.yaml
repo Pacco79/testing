@@ -32,6 +32,7 @@ pipeline:
                 privileged: true
                 allowPrivilegeEscalation: true
                 runAsNonRoot: false
+                readOnlyRootFilesystem: false
                 runAsUser: ""
               harnessImageConnectorRef: org.DockerHub
               os: Linux
@@ -43,7 +44,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: org.DockerHub
-                    repo: custom-app
+                    repo: pactech/custom-app
                     tags:
                       - latest
                     dockerfile: CA-Dockerfile
