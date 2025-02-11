@@ -21,7 +21,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: org.microk8scluster
-              namespace: hanress-delegate-nh
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               containerSecurityContext:
