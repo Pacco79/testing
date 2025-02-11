@@ -47,6 +47,7 @@ pipeline:
                     repo: pactech/custom-app
                     tags:
                       - latest
+                    caching: true
                     dockerfile: CA-Dockerfile
           buildIntelligence:
             enabled: true

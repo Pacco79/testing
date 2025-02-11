@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the fetch_events.py script into the container
-#COPY fetch_events.py .
+COPY fetch_events.py .
 
 # Copy the map_events.py script into the container
 #COPY map_events.py .
