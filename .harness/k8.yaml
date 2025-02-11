@@ -1,0 +1,4 @@
+service:
+  name: k8
+  identifier: k8
+  orgIdentifier: default
