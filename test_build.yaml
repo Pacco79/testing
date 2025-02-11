@@ -17,17 +17,22 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
+          caching:
+            enabled: true
           infrastructure:
             type: KubernetesDirect
             spec:
               connectorRef: org.microk8scluster
               namespace: harness-delegate-ng
+              runAsUser: ""
               automountServiceAccountToken: true
               nodeSelector: {}
               containerSecurityContext:
                 privileged: true
                 allowPrivilegeEscalation: true
-              harnessImageConnectorRef: org.DockerHub
+                runAsNonRoot: false
+                runAsUser: ""
+              harnessImageConnectorRef: NewDockerReg
               os: Linux
           execution:
             steps:
@@ -41,3 +46,5 @@ pipeline:
                     tags:
                       - latest
                     dockerfile: CA-Dockerfile
+        delegateSelectors:
+          - helm-delegate
