@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Pacco79_testing_1739274315786-push-trigger-input-set
+  identifier: Build_Pacco79_testing_1739274315786pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: events
+  pipeline:
+    identifier: Build_Pacco79_testing_1739274315786
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
