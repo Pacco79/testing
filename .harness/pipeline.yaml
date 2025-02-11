@@ -41,4 +41,4 @@ pipeline:
                     tags:
                       - latest
                     caching: true
-                    dockerfile: CA-Dockerfile
+                    dockerfile: testing/CA-Dockerfile
