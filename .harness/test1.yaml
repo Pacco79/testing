@@ -1,0 +1,39 @@
+pipeline:
+  name: test1
+  identifier: test1
+  projectIdentifier: events
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: org.microk8scluster
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              containerSecurityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+              harnessImageConnectorRef: account.harnessImage
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: pactech/custom-app
+                    tags:
+                      - latest
+                    caching: true
+                    dockerfile: CA-Dockerfile
