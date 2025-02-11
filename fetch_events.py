@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # Convert the DataFrame to HTML
+    # Convert the DataFrame to HTML1
     html_table = df.to_html(classes='table table-striped', index=False)
     return render_template('index.html', table=html_table)
 
